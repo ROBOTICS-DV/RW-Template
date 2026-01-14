@@ -1,6 +1,6 @@
 using namespace vex;
 
-/// Format: extern device deviceName;
+// Format: extern device deviceName;
 
 extern brain Brain;
 
@@ -51,14 +51,10 @@ extern double horizontal_tracker_diameter;
 extern double vertical_tracker_diameter;
 
 // Distance Reset setup 
-extern double front_sensor_offset_x;
-extern double front_sensor_offset_y;
-extern double left_sensor_offset_x;
-extern double left_sensor_offset_y;
-extern double right_sensor_offset_x;
-extern double right_sensor_offset_y;
-extern double back_sensor_offset_x;
-extern double back_sensor_offset_y;
+extern double front_sensor_offset;
+extern double left_sensor_offset;
+extern double right_sensor_offset;
+extern double back_sensor_offset;
 
 // Advanced Tuning Parameters
 extern bool heading_correction;

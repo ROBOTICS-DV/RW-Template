@@ -1284,15 +1284,14 @@ void boomerang(double x, double y, int dir, double a, double dlead, double time_
  * Only resets X or Y position (not both) based on the wall being measured.
  * 
  * - sensor: Distance sensor to use
- * - sensor_offset_x: Horizontal offset of sensor from robot center 
- * - sensor_offset_y: Vertical offset of sensor from robot center 
+ * - sensor_offset: Distance offset of the sensor from robot center (in inches)
  * - sensor_angle_offset: Angle offset for the sensor direction (0° = front, 90° = right, 180° = back, 270° = left)
  * - field_half_size: Half the field dimension (distance from center to wall, in inches)
 
  ** - IMPORTANT NOTE FOR THE USER - **
  * - DO NOT CALL THIS FUNCTION DIRECTLY, use the specific direction functions below instead.
  */
-void resetPositionWithSensor(vex::distance& sensor, double sensor_offset_x, double sensor_offset_y, double sensor_angle_offset, double field_half_size) {
+void resetPositionWithSensor(vex::distance& sensor, double sensor_offset, double sensor_angle_offset, double field_half_size) {
     double sensorReading = sensor.objectDistance(inches);
   
     // Check for invalid reading (distance sensors return -1 or very large values when no object detected)
@@ -1334,18 +1333,8 @@ void resetPositionWithSensor(vex::distance& sensor, double sensor_offset_x, doub
         wallSign = -1.0;
     }
     
-    // Calculate position
-    double worldAngle = degToRad(robot_heading_deg);
-
-    double dirX = sin(worldAngle);
-    double dirY = cos(worldAngle);
-
-    double sensorToWall = sensorReading * (resettingX ? dirX : dirY);
-
-    double sensorToCenter = sensor_offset_x * dirX + sensor_offset_y * dirY;
-
     // Calculate distance from wall to robot center
-    double wallToCenter = fabs(sensorToWall + sensorToCenter);
+    double wallToCenter = sensorReading + sensor_offset;
     
     // Calculate actual position
     double actualPos = wallSign * (field_half_size - wallToCenter);
@@ -1353,15 +1342,9 @@ void resetPositionWithSensor(vex::distance& sensor, double sensor_offset_x, doub
     // Update position (only reset the appropriate axis)
     if (resettingX) {
         x_pos = actualPos;
-        Brain.Screen.clearLine(1);
-        Brain.Screen.setCursor(1,1);
-        Brain.Screen.print("X position reset to: %.2f", x_pos);
 
     } else {
         y_pos = actualPos;
-        Brain.Screen.clearLine(2);
-        Brain.Screen.setCursor(1,2);
-        Brain.Screen.print("Y position reset to: %.2f", y_pos);
 
     }
 }
@@ -1369,51 +1352,50 @@ void resetPositionWithSensor(vex::distance& sensor, double sensor_offset_x, doub
 /*
  * resetPositionFront
  * Resets position using the front distance sensor.
+ * Remember to only use these when perpendicular to the wall!
  * - sensor: Front distance sensor
- * - sensor_offset_x: Horizontal offset of sensor from robot center 
- * - sensor_offset_y: Vertical offset of sensor from robot center 
+ * - sensor_offset: Distance offset of the sensor from robot center (in inches)
  * - field_half_size: Half the field dimension (distance from center to wall, in inches)
  */
 void resetPositionFront() {
-    resetPositionWithSensor(front_sensor, front_sensor_offset_x, front_sensor_offset_y, 0.0, field_half_size);
+    resetPositionWithSensor(front_sensor, front_sensor_offset, 0.0, field_half_size);
 }
 
 /*
  * resetPositionBack
  * Resets position using the back distance sensor.
+ * Remember to only use these when perpendicular to the wall!
  * - sensor: Back distance sensor 
- * - sensor_offset_x: Horizontal offset of sensor from robot center 
- * - sensor_offset_y: Vertical offset of sensor from robot center 
+ * - sensor_offset: Distance offset of the sensor from robot center (in inches)
  * - field_half_size: Half the field dimension (distance from center to wall, in inches)
  */
 void resetPositionBack() {
-    resetPositionWithSensor(back_sensor, back_sensor_offset_x, back_sensor_offset_y, 180.0, field_half_size);
+    resetPositionWithSensor(back_sensor, back_sensor_offset, 180.0, field_half_size);
 }
 
 /*
  * resetPositionLeft
  * Resets position using the left distance sensor.
+ * Remember to only use these when perpendicular to the wall!
  * - sensor: Left distance sensor
- * - sensor_offset_x: Horizontal offset of sensor from robot center 
- * - sensor_offset_y: Vertical offset of sensor from robot center 
+ * - sensor_offset: Distance offset of the sensor from robot center (in inches)
  * - field_half_size: Half the field dimension (distance from center to wall, in inches)
  */
 void resetPositionLeft() {
-    resetPositionWithSensor(left_sensor, left_sensor_offset_x, left_sensor_offset_y, 270.0, field_half_size);
+    resetPositionWithSensor(left_sensor, left_sensor_offset, 270.0, field_half_size);
 }
 
 /*
  * resetPositionRight
  * Resets position using the right distance sensor.
+ * Remember to only use these when perpendicular to the wall!
  * - sensor: Right distance sensor
- * - sensor_offset_x: Horizontal offset of sensor from robot center 
- * - sensor_offset_y: Vertical offset of sensor from robot center 
+ * - sensor_offset: Distance offset of the sensor from robot center (in inches)
  * - field_half_size: Half the field dimension (distance from center to wall, in inches)
  */
 void resetPositionRight() {
-    resetPositionWithSensor(right_sensor, right_sensor_offset_x, right_sensor_offset_y, 90.0, field_half_size);
+    resetPositionWithSensor(right_sensor, right_sensor_offset, 90.0, field_half_size);
 }
-
 
 // ============================================================================
 // TEMPLATE NOTE

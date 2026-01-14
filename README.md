@@ -132,7 +132,7 @@ If using a horizontal and/or vertical tracking wheel:
 If using distance resets:
 
 - Configure your ports to the prebuilt sensor declarations (DO NOT CHANGE THE NAMES)
-- Set your sensor X and Y offsets (in inches) for each sensor (All offset values are positive)
+- Set your sensor offsets (in inches) for each sensor (All offset values are positive)
 
 ### 4. Autonomous Programming
 
