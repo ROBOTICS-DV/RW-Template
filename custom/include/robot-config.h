@@ -24,6 +24,12 @@ extern distance front_sensor;
 extern distance left_sensor;
 extern distance right_sensor;
 extern distance back_sensor;
+extern digital_out scraper;
+extern digital_out descore;
+extern digital_out midgoal;
+
+extern motor intake1;
+extern motor intake2;
 
 extern motor arm_motor1;
 extern motor arm_motor2;
