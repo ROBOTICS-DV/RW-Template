@@ -13,7 +13,7 @@ void runAutonomous() {
      autonskillsActual();
      break;
    case 2:
-     autonskills(); //newly made
+     autonskills(); 
      break; 
    case 3:
      rightsidelow();
@@ -34,7 +34,10 @@ void runAutonomous() {
      rightside4push();
      break;
    case 9:
+     sawp(); 
      break;
+   case 10: 
+     break; 
  }
 }
 
