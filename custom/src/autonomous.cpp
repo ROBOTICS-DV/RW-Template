@@ -293,7 +293,7 @@ void autonskillsActual(){
   intake2.spin(reverse, 12, volt);
   wait(300, msec);
   midgoal.set(true);
-  driveTo(-6, 500, true, 9);  // drive into midgoal
+  driveTo(-6, 500, true, 9);  //  drive into midgoal
   intake2.spin(fwd, 0, volt);
   intake1.spin(fwd, 12, volt);
   wait(3500, msec);                                                                                                       
