@@ -285,7 +285,7 @@ void autonskillsActual(){
   intake1.spin(fwd,12,volt);
   driveTo(92,2000,true,6); //drive through section
   resetPositionLeft();
-  turnToAngle(135, 500, true, 9); //midgoal angle
+  turnToAngle(135, 500, true, 9); // midgoal angle
   moveToPoint(62, -21, -1, 2000, true, 8); //midgoal allignment
   turnToAngle(135, 1000, false, 9); //midgoal angle
   scraper.set(true);
