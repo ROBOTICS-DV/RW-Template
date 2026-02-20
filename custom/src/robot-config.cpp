@@ -28,6 +28,8 @@ motor right_chassis1 = motor(PORT19, ratio6_1, false);
 motor right_chassis2 = motor(PORT9, ratio6_1, true);
 motor right_chassis3 = motor(PORT17, ratio6_1, false);
 
+distance left_sensor = distance(PORT3);
+distance right_sensor = distance(PORT10);
 
 motor_group right_chassis = motor_group(right_chassis1, right_chassis2, right_chassis3);
 
@@ -132,3 +134,6 @@ bool RemoteControlCodeEnabled = true;
 void vexcodeInit(void) {
  // nothing to initialize
 }
+
+
+

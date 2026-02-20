@@ -1357,7 +1357,7 @@ void resetPositionWithSensor(vex::distance& sensor, double sensor_offset, double
  * - sensor_offset: Distance offset of the sensor from robot center (in inches)
  * - field_half_size: Half the field dimension (distance from center to wall, in inches)
  */
-void resetPositionFront() {
+/*void resetPositionFront() {
     resetPositionWithSensor(front_sensor, front_sensor_offset, 0.0, field_half_size);
 }
 
@@ -1368,11 +1368,11 @@ void resetPositionFront() {
  * - sensor: Back distance sensor 
  * - sensor_offset: Distance offset of the sensor from robot center (in inches)
  * - field_half_size: Half the field dimension (distance from center to wall, in inches)
- */
+ 
 void resetPositionBack() {
     resetPositionWithSensor(back_sensor, back_sensor_offset, 180.0, field_half_size);
 }
-
+*/
 /*
  * resetPositionLeft
  * Resets position using the left distance sensor.
@@ -1382,7 +1382,7 @@ void resetPositionBack() {
  * - field_half_size: Half the field dimension (distance from center to wall, in inches)
  */
 void resetPositionLeft() {
-    resetPositionWithSensor(left_sensor, left_sensor_offset, 270.0, field_half_size);
+    resetPositionWithSensor(left_sensor, 5.5, 270.0, field_half_size);
 }
 
 /*
@@ -1394,7 +1394,7 @@ void resetPositionLeft() {
  * - field_half_size: Half the field dimension (distance from center to wall, in inches)
  */
 void resetPositionRight() {
-    resetPositionWithSensor(right_sensor, right_sensor_offset, 90.0, field_half_size);
+    resetPositionWithSensor(right_sensor, 5.5, 90.0, field_half_size);
 }
 
 // ============================================================================

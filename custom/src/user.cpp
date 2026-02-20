@@ -13,7 +13,7 @@ void runAutonomous() {
      autonskillsActual();
      break;
    case 2:
-     autonskills(); 
+     autonskills(); //newly made
      break; 
    case 3:
      rightsidelow();
@@ -34,10 +34,7 @@ void runAutonomous() {
      rightside4push();
      break;
    case 9:
-     sawp(); 
      break;
-   case 10: 
-     break; 
  }
 }
 
@@ -185,3 +182,4 @@ void runPreAutonomous() {
    thread odom = thread(trackNoOdomWheel);
  }
 }
+
