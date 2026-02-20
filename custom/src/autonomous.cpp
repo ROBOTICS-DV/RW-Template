@@ -274,7 +274,7 @@ void autonskillsActual(){
   intake1.spin(fwd,0,volt);
   intake2.spin(fwd,0,volt);
   scraper.set(false); //scraper up
-  moveToPoint(79,-8,1,1100,true,8); //move to park
+  moveToPoint(79,-8,1,1100,true,8); // move to park
   turnToAngle(175,500,true,10); //align to park
   driveTo(18,1000,true,5); //move a lil further
   driveTo(-6, 300, true, 8);
